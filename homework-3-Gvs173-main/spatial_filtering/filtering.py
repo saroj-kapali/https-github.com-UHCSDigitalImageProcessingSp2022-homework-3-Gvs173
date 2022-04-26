@@ -28,20 +28,20 @@ class Filtering:
             f = Filtering.get_gaussian_filter(self)
             img1 = np.zeros([img.shape[0]+4,img.shape[1]+4])
             img1[2:img.shape[0]+2,2:img.shape[1]+2] = img
-            new_variable= np.zeros(img.shape)
-            for i in range(2,img.shape[0]+2):
-                for j in range(2,img.shape[1]+2):
-                    new_variable[i-2,j-2]= (np.multiply(img1[i-2:i+3,j-2:j+3],f)).sum()
+            new_variable = np.zeros(img.shape)
+            for i in range(2, img.shape[0]+2):
+                for j in range(2, img.shape[1]+2):
+                    new_variable[i-2, j-2] = (np.multiply(img1[i-2:i+3, j-2:j+3], f)).sum()
 
         else:
             img=self.image
             f=Filtering.get_laplacian_filter(self)
             img1 = np.zeros([img.shape[0]+2,  img.shape[1]+2])
-            img1[1:img.shape[0]+1,1:img.shape[1]+1] = img
-            new_variable= np.zeros(img.shape)
+            img1[1:img.shape[0]+1, 1:img.shape[1]+1] = img
+            new_variable = np.zeros(img.shape)
             for i in range(1, img.shape[0]+1):
                 for j in range(1, img.shape[1]+1):
-                    new_variable[i-1, j-1]= (np.multiply(img1[i-1:i+2, j-1: j+2],f)).sum()
+                    new_variable[i-1, j-1]= (np.multiply(img1[i-1:i+2, j-1: j+2], f)).sum()
 
         return new_variable
 
