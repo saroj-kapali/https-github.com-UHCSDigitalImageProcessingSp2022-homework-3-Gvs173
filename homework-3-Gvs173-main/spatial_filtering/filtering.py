@@ -36,11 +36,11 @@ class Filtering:
         else:
             img=self.image
             f=Filtering.get_laplacian_filter(self)
-            img1 = np.zeros([img.shape[0]+2,  img.shape[1]+2])
+            img1 = np.zeros([img.shape[0]+2, img.shape[1]+2])
             img1[1:img.shape[0]+1, 1:img.shape[1]+1] = img
             new_variable = np.zeros(img.shape)
             for i in range(1, img.shape[0]+1):
-                for j in range(1, img.shape[1]+1):
+                for j in range(1,img.shape[1]+1):
                     new_variable[i-1, j-1]= (np.multiply(img1[i-1:i+2, j-1: j+2], f)).sum()
 
         return new_variable
