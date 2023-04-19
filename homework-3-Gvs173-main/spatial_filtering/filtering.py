@@ -1,3 +1,5 @@
+from spatial_filtering.filtering import Filtering
+
 import numpy as np
 
 
